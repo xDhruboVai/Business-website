@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- 🏆 Top Navigation Bar -->
+    <header id="navbar">
+        <div class="nav-container">
+            <!-- Company Logo -->
+            <div class="logo">Non-Chalant Fashions</div>
+
+            <!-- Navigation Links -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#featured-products">Shop</a></li>
+                    <li class="dropdown">
+                        <a href="#categories-section">Categories</a>
+                    </li>
+                    <li><a href="#footer">About Us</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+            </nav>            
+
+            <!-- Cart & Login Button -->
+            <div class="nav-icons">
+                <div class="cart">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">3</span>
+                </div>
+                <button class="login-btn">Login / Sign Up</button>
+            </div>
+
+            <!-- Hamburger Menu for Mobile View -->
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav">
+            <a href="#">Shop</a>
+            <a href="#">Categories</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </div>
+    </header>
+
+   <!-- Hero Section -->
+<section id="hero">
+    <div class="hero-slider">
+        <div class="hero-slide">
+            <img src="slide1.jpg" alt="Slide 1" class="slide-image">
+            <div class="hero-content">
+                <h1 class="hero-title">Explore the Future of Shopping</h1>
+                <p class="hero-subtext">Find unique pieces crafted for the modern world.</p>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="slide2.jpg" alt="Slide 2" class="slide-image">
+            <div class="hero-content">
+                <h1 class="hero-title">Style Meets Innovation</h1>
+                <p class="hero-subtext">Discover our collection that defines excellence.</p>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="slide3.jpg" alt="Slide 3" class="slide-image">
+            <div class="hero-content">
+                <h1 class="hero-title">Luxury for Every Occasion</h1>
+                <p class="hero-subtext">Curated to suit your lifestyle with elegance and flair.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide Indicators -->
+    <div class="slide-indicators">
+        <span class="indicator" data-slide="0"></span>
+        <span class="indicator" data-slide="1"></span>
+        <span class="indicator" data-slide="2"></span>
+    </div>
+</section>
+
+
+    
+
+    <!-- Featured Products Section -->
+<section id="featured-products">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="product-container">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-front">
+                <img src="product1.jpg" alt="Product 1">
+                <div class="product-details">
+                    <h3 class="product-title">Product 1</h3>
+                    <p class="product-subtext">Short Description</p>
+                </div>
+            </div>
+            <div class="product-back">
+                <h3 class="product-title">Product 1</h3>
+                <p class="product-price">$29.99</p>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-front">
+                <img src="product2.jpg" alt="Product 2">
+                <div class="product-details">
+                    <h3 class="product-title">Product 2</h3>
+                    <p class="product-subtext">Short Description</p>
+                </div>
+            </div>
+            <div class="product-back">
+                <h3 class="product-title">Product 2</h3>
+                <p class="product-price">$39.99</p>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+            <div class="product-front">
+                <img src="product3.jpg" alt="Product 3">
+                <div class="product-details">
+                    <h3 class="product-title">Product 3</h3>
+                    <p class="product-subtext">Short Description</p>
+                </div>
+            </div>
+            <div class="product-back">
+                <h3 class="product-title">Product 3</h3>
+                <p class="product-price">$49.99</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Categories Section-->
+    <section id="categories-section">
+            <h2>Our Categories</h2>
+            <p>Explore our curated selection of categories to find the best products for you.</p>
+
+            <div class="category-button-container">
+                <button class="category-button" onclick="changeCategory('fashion')">Fashion</button>
+                <button class="category-button" onclick="changeCategory('timepieces')">Time Pieces</button>
+                <button class="category-button" onclick="changeCategory('beauty')">Beauty</button>
+            </div>
+            <div class="categories-grid-container">
+            <!-- Fashion Category Grid -->
+            <div class="category-grid" id="fashion">
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "fashion1.jpg">
+                        </div>
+                        <div class="card-back"><p>$29.99</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "fashion2.jpg">
+                        </div>
+                        <div class="card-back"><p>$35.99</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "fashion3.jpg">
+                        </div>
+                        <div class="card-back"><p>$40.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "fashion4.jpg">
+                        </div>
+                        <div class="card-back"><p>F$45.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "fashion5.jpg">
+                        </div>
+                        <div class="card-back"><p>$50.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "fashion6.jpg">
+                        </div>
+                        <div class="card-back"><p>$55.00</p></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Timepieces Category Grid -->
+            <div class="category-grid" id="timepieces">
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "watch1.jpg">
+                        </div>
+                        <div class="card-back"><p>$199.99</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "watch2.jpg">
+                        </div>
+                        <div class="card-back"><p>$150.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "watch3.jpg">
+                        </div>
+                        <div class="card-back"><p>$120.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "watch4.jpg">
+                        </div>
+                        <div class="card-back"><p>$250.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "watch5.jpg">
+                        </div>
+                        <div class="card-back"><p>$130.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "watch6.jpg">
+                        </div>
+                        <div class="card-back"><p>$120.00</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beauty Category Grid -->
+            <div class="category-grid" id="beauty">
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "beauty1.jpg">
+                        </div>
+                        <div class="card-back"><p>$30.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "beauty2.jpg">
+                        </div>
+                        <div class="card-back"><p>$45.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "beauty3.jpg">
+                        </div>
+                        <div class="card-back"><p>$40.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "beauty4.jpg">
+                        </div>
+                        <div class="card-back"><p>$35.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "beauty5.jpg">
+                        </div>
+                        <div class="card-back"><p>$120.00</p></div>
+                    </div>
+                </div>
+                <div class="category-product-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src = "beauty6.jpg">
+                        </div>
+                        <div class="card-back"><p>$120.00</p></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</section>
+
+
+
+
+
+
+    <!-- 📖 About Us Section -->
+<section id="about">
+    <!-- Company History & Vision -->
+    <div class="company-info">
+        <h2>About Our Company</h2>
+        <p>We are pioneers in the world of fashion, offering the finest quality products and innovative designs that aim to inspire individuals worldwide. Our vision is to empower people to express their uniqueness and feel confident in their own style.</p>
+    </div>
+
+    <!-- Auto-Scrolling Image Carousel -->
+    <div class="carousel-container">
+        <div class="carousel-images">
+            <img src="image1.jpg" alt="Image 1">
+            <img src="image2.jpg" alt="Image 2">
+            <img src="image3.jpg" alt="Image 3">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- 🛒 Shopping Cart & Checkout -->
+    <section id="checkout">
+        <!-- Shopping Cart Items -->
+        <!-- Quantity Update & Remove Options -->
+        <!-- Checkout Button -->
+    </section>
+
+    <!-- 📩 Footer -->
+    <footer id = "footer">
+        <div class="footer-container">
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Social Media Icons -->
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a></li>
+                    <li><a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a></li>
+                    <li><a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a></li>
+                    <li><a href="#" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a></li>
+                </ul>
+            </div>
+    
+            <!-- Newsletter Subscription -->
+            <div class="newsletter">
+                <h3>Subscribe to Our Newsletter</h3>
+                <form action="#" method="POST">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Shrek Institute of Legal Electronics. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Select all links
+        const navLinks = document.querySelectorAll('nav ul li a');
+      
+        // Add event listener to each link for smooth scrolling
+        navLinks.forEach(link => {
+          link.addEventListener('click', function(event) {
+            event.preventDefault();
+      
+            // Get the target section to scroll to
+            const targetId = this.getAttribute('href').substring(1); // Remove '#' from href
+            const targetSection = document.getElementById(targetId);
+      
+            // Smooth scroll to the section
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          });
+        });
+      </script>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
