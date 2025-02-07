@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business</title>
@@ -22,7 +23,7 @@
                     <li class="dropdown">
                         <a href="#categories-section">Categories</a>
                     </li>
-                    <li><a href="#footer">About Us</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li><a href="#footer">Contact</a></li>
                 </ul>
             </nav>            
@@ -31,10 +32,50 @@
             <div class="nav-icons">
                 <div class="cart">
                     <span class="cart-icon">🛒</span>
-                    <span class="cart-count">3</span>
+                    <span class="cart-count">0</span> <!-- Cart count updates dynamically -->
+                    <div class="cart-dropdown">
+                        <h3>Shopping Cart</h3>
+                        <div class="cart-items"></div> <!-- Cart items appear here -->
+                    </div>
                 </div>
+                
                 <button class="login-btn">Login / Sign Up</button>
             </div>
+            <div class="cart-overlay">
+                <div class="cart-box">
+                    <span class="close-cart">&times;</span>
+                    <h2>Your Cart</h2>
+                    <ul class="cart-items"></ul>
+                    <div class="cart-total">
+                        <strong>Total:</strong> $<span id="cart-total">0.00</span>
+                    </div>
+                    <button class="checkout-btn">Checkout</button>
+                </div>
+            </div>
+            
+            <!-- Popup Container -->
+            <div class="popup-overlay">
+                <div class="popup-box">
+                    <span class="close-btn">&times;</span>
+                    <h2 id="popup-title">Login</h2>
+                    
+                    <form id="login-form">
+                        <input type="text" placeholder="Username" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                        <p>Don't have an account? <span class="toggle-signup">Sign Up</span></p>
+                    </form>
+            
+                    <form id="signup-form" class="hidden">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <input type="password" placeholder="Password" required>
+                        <button type="submit">Sign Up</button>
+                        <p>Already have an account? <span class="toggle-login">Login</span></p>
+                    </form>
+                </div>
+            </div>
+            
 
             <!-- Hamburger Menu for Mobile View -->
             <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -95,13 +136,14 @@
             <div class="product-front">
                 <img src="product1.jpg" alt="Product 1">
                 <div class="product-details">
-                    <h3 class="product-title">Product 1</h3>
-                    <p class="product-subtext">Short Description</p>
+                    <h3 class="product-title">Classic Leather Watch</h3>
+                    <p class="product-subtext">Timeless & Elegant</p>
                 </div>
             </div>
             <div class="product-back">
-                <h3 class="product-title">Product 1</h3>
-                <p class="product-price">$29.99</p>
+                <h3 class="product-title">Classic Leather Watch</h3>
+                <p class="product-price">$2999.99</p>
+                <button class="add-to-cart" onclick="addToCart('Classic Leather Watch', 2999.99)">Add to Cart</button>
             </div>
         </div>
 
@@ -110,13 +152,14 @@
             <div class="product-front">
                 <img src="product2.jpg" alt="Product 2">
                 <div class="product-details">
-                    <h3 class="product-title">Product 2</h3>
-                    <p class="product-subtext">Short Description</p>
+                    <h3 class="product-title">Urban Winter Jacket</h3>
+                    <p class="product-subtext">Warm & Durable</p>
                 </div>
             </div>
             <div class="product-back">
-                <h3 class="product-title">Product 2</h3>
-                <p class="product-price">$39.99</p>
+                <h3 class="product-title">Urban Winter Jacket</h3>
+                <p class="product-price">$1339.99</p>
+                <button class="add-to-cart" onclick="addToCart('Urban Winter Jacket', 1399.99)">Add to Cart</button>
             </div>
         </div>
 
@@ -125,13 +168,14 @@
             <div class="product-front">
                 <img src="product3.jpg" alt="Product 3">
                 <div class="product-details">
-                    <h3 class="product-title">Product 3</h3>
-                    <p class="product-subtext">Short Description</p>
+                    <h3 class="product-title">Minimalist Oversized Coat</h3>
+                    <p class="product-subtext">Sleek & Stylish</p>
                 </div>
             </div>
             <div class="product-back">
-                <h3 class="product-title">Product 3</h3>
-                <p class="product-price">$49.99</p>
+                <h3 class="product-title">Minimalist Oversized Coat</h3>
+                <p class="product-price">$1499.99</p>
+                <button class="add-to-cart" onclick="addToCart('Minimalist Oversized Coat', 1499.99)">Add to Cart</button>
             </div>
         </div>
     </div>
@@ -153,17 +197,23 @@
                 <div class="category-product-card">
                     <div class="card-inner">
                         <div class="card-front">
-                            <img src = "fashion1.jpg">
+                            <img src="fashion1.jpg">
                         </div>
-                        <div class="card-back"><p>$29.99</p></div>
+                        <div class="card-back">
+                            <p>Black Coat - $2229.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Black Coat', 2229.99)">Add to Cart</button>
+                        </div>
                     </div>
-                </div>
+                </div>                
                 <div class="category-product-card">
                     <div class="card-inner">
                         <div class="card-front">
                             <img src = "fashion2.jpg">
                         </div>
-                        <div class="card-back"><p>$35.99</p></div>
+                        <div class="card-back">
+                            <p>Shirt - $305.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Shirt', 305)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -171,7 +221,10 @@
                         <div class="card-front">
                             <img src = "fashion3.jpg">
                         </div>
-                        <div class="card-back"><p>$40.00</p></div>
+                        <div class="card-back">
+                            <p>Purple Coat - $400.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Purple Coat', 400)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -179,7 +232,10 @@
                         <div class="card-front">
                             <img src = "fashion4.jpg">
                         </div>
-                        <div class="card-back"><p>F$45.00</p></div>
+                        <div class="card-back">
+                            <p>Blue Shirt - $405.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Blue Shirt', 400)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -187,7 +243,10 @@
                         <div class="card-front">
                             <img src = "fashion5.jpg">
                         </div>
-                        <div class="card-back"><p>$50.00</p></div>
+                        <div class="card-back">
+                            <p>Leather Jacket - $5550.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Leather Jacket', 5550)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -195,7 +254,10 @@
                         <div class="card-front">
                             <img src = "fashion6.jpg">
                         </div>
-                        <div class="card-back"><p>$55.00</p></div>
+                        <div class="card-back">
+                            <p>Indian Chapri - $1.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Indian Chapri', 1)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
 
@@ -207,7 +269,10 @@
                         <div class="card-front">
                             <img src = "watch1.jpg">
                         </div>
-                        <div class="card-back"><p>$199.99</p></div>
+                        <div class="card-back">
+                            <p>Watch - $1199.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Watch', 1199)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -215,7 +280,10 @@
                         <div class="card-front">
                             <img src = "watch2.jpg">
                         </div>
-                        <div class="card-back"><p>$150.00</p></div>
+                        <div class="card-back">
+                            <p>Watch - $150.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Womens Watch', 150)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -223,7 +291,10 @@
                         <div class="card-front">
                             <img src = "watch3.jpg">
                         </div>
-                        <div class="card-back"><p>$120.00</p></div>
+                        <div class="card-back">
+                            <p>Smart Watch - $120.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Smart Watch', 120)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -231,7 +302,10 @@
                         <div class="card-front">
                             <img src = "watch4.jpg">
                         </div>
-                        <div class="card-back"><p>$250.00</p></div>
+                        <div class="card-back">
+                            <p>Fancy Watch - $1250.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Fancy Watch', 1250)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -239,7 +313,10 @@
                         <div class="card-front">
                             <img src = "watch5.jpg">
                         </div>
-                        <div class="card-back"><p>$130.00</p></div>
+                        <div class="card-back">
+                            <p>Fancier Watch - $2130.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Fancier Watch', 2130)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -247,7 +324,10 @@
                         <div class="card-front">
                             <img src = "watch6.jpg">
                         </div>
-                        <div class="card-back"><p>$120.00</p></div>
+                        <div class="card-back">
+                            <p>Fanciest Watch - $3120.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Fanciest Watch', 3120)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -259,7 +339,10 @@
                         <div class="card-front">
                             <img src = "beauty1.jpg">
                         </div>
-                        <div class="card-back"><p>$30.00</p></div>
+                        <div class="card-back">
+                            <p>Eleganto Lipstick - $309.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Eleganto Lipstick', 309.99)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -267,7 +350,10 @@
                         <div class="card-front">
                             <img src = "beauty2.jpg">
                         </div>
-                        <div class="card-back"><p>$45.00</p></div>
+                        <div class="card-back">
+                            <p>Black Sunglass - $199.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Black Sunglass', 199.99)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -275,13 +361,20 @@
                         <div class="card-front">
                             <img src = "beauty3.jpg">
                         </div>
-                        <div class="card-back"><p>$40.00</p></div>
+                        <div class="card-back">
+                            <p>Watch - $1199.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Watch', 1199)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
                     <div class="card-inner">
                         <div class="card-front">
                             <img src = "beauty4.jpg">
+                        </div>
+                        <div class="card-back">
+                            <p>Giorno. - $1199.99</p>
+                            <button class="add-to-cart" onclick="addToCart('MUDAMUIDAMUDAMUDAMUDA', 1199)">Add to Cart</button>
                         </div>
                         <div class="card-back"><p>$35.00</p></div>
                     </div>
@@ -291,7 +384,10 @@
                         <div class="card-front">
                             <img src = "beauty5.jpg">
                         </div>
-                        <div class="card-back"><p>$120.00</p></div>
+                        <div class="card-back">
+                            <p>Anti Acne - $120.00</p>
+                            <button class="add-to-cart" onclick="addToCart('Anti Acne', 120)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
                 <div class="category-product-card">
@@ -299,7 +395,10 @@
                         <div class="card-front">
                             <img src = "beauty6.jpg">
                         </div>
-                        <div class="card-back"><p>$120.00</p></div>
+                        <div class="card-back">
+                            <p>Scam - $1199.99</p>
+                            <button class="add-to-cart" onclick="addToCart('Scam', 1199)">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -307,27 +406,12 @@
         </div>
 </section>
 
-
-
-
-
-
     <!-- 📖 About Us Section -->
 <section id="about">
     <!-- Company History & Vision -->
     <div class="company-info">
         <h2>About Our Company</h2>
         <p>We are pioneers in the world of fashion, offering the finest quality products and innovative designs that aim to inspire individuals worldwide. Our vision is to empower people to express their uniqueness and feel confident in their own style.</p>
-    </div>
-
-    <!-- Auto-Scrolling Image Carousel -->
-    <div class="carousel-container">
-        <div class="carousel-images">
-            <img src="image1.jpg" alt="Image 1">
-            <img src="image2.jpg" alt="Image 2">
-            <img src="image3.jpg" alt="Image 3">
-            <img src="image4.jpg" alt="Image 4">
-        </div>
     </div>
 </section>
 
@@ -347,11 +431,9 @@
             <div class="quick-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#navbar">Home</a></li>
+                    <li><a href="#featured-products">Shop</a></li>
+                    <li><a href="#categories-section">Categories</a></li>
                 </ul>
             </div>
             
@@ -359,10 +441,10 @@
             <div class="social-media">
                 <h3>Follow Us</h3>
                 <ul>
-                    <li><a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a></li>
-                    <li><a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a></li>
-                    <li><a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a></li>
-                    <li><a href="#" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn"></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                 </ul>
             </div>
     

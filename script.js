@@ -115,18 +115,30 @@ document.querySelectorAll('.category-button').forEach(button => {
 }
 
 
-// Function to show the selected category
+// Function to show the selected category with a smooth transition
 function changeCategory(category) {
     document.querySelectorAll(".category-grid").forEach(grid => {
-        grid.style.display = "none";
+        grid.style.opacity = "0"; // Fade out
+        setTimeout(() => {
+            grid.style.display = "none"; // Hide after fade-out
+        }, 300); // Wait for fade-out animation
     });
-    document.getElementById(category).style.display = "grid";
+
+    const selectedGrid = document.getElementById(category);
+    setTimeout(() => {
+        selectedGrid.style.display = "grid";
+        selectedGrid.style.opacity = "0"; // Ensure it starts hidden
+        setTimeout(() => {
+            selectedGrid.style.opacity = "1"; // Fade in
+        }, 50); // Small delay to trigger fade-in
+    }, 300); // Delay for smooth transition
 }
 
 // Default category (Fashion)
 document.addEventListener("DOMContentLoaded", () => {
     changeCategory("fashion");
 });
+
 
 // Function to scroll to category and highlight
 function scrollToCategory(category) {
@@ -161,5 +173,188 @@ function scrollToCategory(category) {
 }
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const loginBtn = document.querySelector(".login-btn");
+    const popupOverlay = document.querySelector(".popup-overlay");
+    const popupBox = document.querySelector(".popup-box");
+    const closeBtn = document.querySelector(".close-btn");
+    const toggleSignup = document.querySelector(".toggle-signup");
+    const toggleLogin = document.querySelector(".toggle-login");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const popupTitle = document.getElementById("popup-title");
 
-  
+    // Open Popup
+    loginBtn.addEventListener("click", () => {
+        popupOverlay.classList.add("active");
+        popupBox.classList.add("active");
+    });
+
+    // Close Popup
+    closeBtn.addEventListener("click", () => {
+        popupOverlay.classList.remove("active");
+        popupBox.classList.remove("active");
+    });
+
+    // Toggle to Signup
+    toggleSignup.addEventListener("click", () => {
+        loginForm.classList.add("hidden");
+        signupForm.classList.remove("hidden");
+        popupTitle.textContent = "Sign Up";
+    });
+
+    // Toggle to Login
+    toggleLogin.addEventListener("click", () => {
+        signupForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+        popupTitle.textContent = "Login";
+    });
+
+    // Close popup when clicking outside the box
+    popupOverlay.addEventListener("click", (e) => {
+        if (e.target === popupOverlay) {
+            popupOverlay.classList.remove("active");
+            popupBox.classList.remove("active");
+        }
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cartIcon = document.querySelector(".cart");
+    const cartOverlay = document.querySelector(".cart-overlay");
+    const cartBox = document.querySelector(".cart-box");
+    const closeCart = document.querySelector(".close-cart");
+    const cartItemsContainer = document.querySelector(".cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    const cartCount = document.querySelector(".cart-count");
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+    let cart = [];
+
+    // Open Cart Popup
+    cartIcon.addEventListener("click", () => {
+        cartOverlay.classList.add("active");
+        cartBox.classList.add("active");
+    });
+
+    // Close Cart Popup
+    closeCart.addEventListener("click", () => {
+        cartOverlay.classList.remove("active");
+        cartBox.classList.remove("active");
+    });
+
+    // Add to Cart Function
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const product = button.closest(".product");
+            const name = product.getAttribute("data-name");
+            const price = parseFloat(product.getAttribute("data-price"));
+
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            updateCart();
+        });
+    });
+
+    // Remove from Cart
+    function removeFromCart(name) {
+        cart = cart.filter(item => item.name !== name);
+        updateCart();
+    }
+
+    // Update Cart UI
+    function updateCart() {
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
+        let itemCount = 0;
+
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            itemCount += item.quantity;
+
+            const li = document.createElement("li");
+            li.innerHTML = `
+                ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}
+                <button class="remove-item" data-name="${item.name}">Remove</button>
+            `;
+            cartItemsContainer.appendChild(li);
+        });
+
+        cartTotal.textContent = total.toFixed(2);
+        cartCount.textContent = itemCount;
+
+        document.querySelectorAll(".remove-item").forEach(button => {
+            button.addEventListener("click", () => {
+                removeFromCart(button.getAttribute("data-name"));
+            });
+        });
+    }
+
+    // Close popup when clicking outside the box
+    cartOverlay.addEventListener("click", (e) => {
+        if (e.target === cartOverlay) {
+            cartOverlay.classList.remove("active");
+            cartBox.classList.remove("active");
+        }
+    });
+});
+
+// Initialize cart array
+let cart = [];
+
+// Function to add items to the cart
+function addToCart(productName, price) {
+    let existingProduct = cart.find(item => item.name === productName);
+
+    if (existingProduct) {
+        existingProduct.quantity++; // Increase quantity if item already exists
+    } else {
+        cart.push({ name: productName, price: price, quantity: 1 });
+    }
+
+    // Update cart UI
+    updateCartCount();
+    updateCartUI();
+}
+
+// Function to update cart count
+function updateCartCount() {
+    let cartCount = document.querySelector('.cart-count');
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems; // Update cart count in UI
+}
+
+// Function to update cart UI (Show cart items and total)
+function updateCartUI() {
+    let cartContainer = document.querySelector('.cart-items');
+    let totalContainer = document.querySelector('.cart-total');
+    
+    cartContainer.innerHTML = ''; // Clear previous items
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        let cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <p>${item.name} - $${item.price} (x${item.quantity})</p>
+        `;
+        cartContainer.appendChild(cartItem);
+    });
+
+    // Update total price in UI
+    totalContainer.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+// Function to show cart on click
+document.querySelector('.cart-icon').addEventListener('click', function() {
+    updateCartUI(); // Refresh total when opening cart
+    document.querySelector('.cart-popup').style.display = 'block';
+});
